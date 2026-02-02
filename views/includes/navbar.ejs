@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/listings"><i class="fa-brands fa-airbnb"></i>airbnb</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link me-2" href="/listings">Explore all stays</a>
+        </li>
+      </ul>
+      
+      <form  role="search" action="/listings" method="get">
+        <div class="search-box d-flex">
+            <input name="search" class=" me-2" type="search" placeholder="Search Stay | Location | Country" aria-label="Search"/>
+            <button class="btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+        
+      </form>
+
+      <div class="xmbox ms-auto me-5 d-flex justify-content-between align-items-center gap-5">
+        <a class="nav-link" href="/listings/new">Become a Host</a>
+
+        <div class="btn-group">
+        
+        <button type="button" class="btn btnLower dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" 
+        style="--bs-btn-color:#ff385c; --bs-btn-border-color:#ff385c; --bs-btn-hover-bg:#ff385c;" aria-expanded="false">
+          <% if(currUser){ %>
+            <span><i class="fa-regular fa-user me-1"></i><%= currUser.username %></span>
+          <% } else { %>
+            <i class="fa-solid fa-user-plus ms-2 pe-4"></i>
+          <% } %>  
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end ">
+            <% if(!currUser) { %>
+                <li><a class="dropdown-item" href="/signup">Sign-up</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="/login">Already have an account</a></li>
+              <% } %>
+            <% if(currUser) { %>
+                <li><a class="dropdown-item" href="/logout">Log out</a></li>
+              <% } %>   
+        </ul>
+      </div>
+      </div>
+      
+      
+
+    </div>
+  </div>
+</nav>

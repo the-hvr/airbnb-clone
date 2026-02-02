@@ -1,0 +1,225 @@
+<% layout('/layouts/boilerplate') %>
+<body>
+    <div class="card show-card">
+        <h3 class="p-2"><%= listing.title %></h3>
+        <img src="<%= listing.image.url %>" class="card-img-top show-Img" alt="<%= listing.title %>">
+        <div class="card-body mt-4">
+            <h5 class="card-title"><%= listing.description %></h5>
+            <p class="card-text mb-2">Price: ₹<%= listing.price.toLocaleString("en-IN") %>/night  
+                <span class="text-muted mx-2">•</span>
+                <i><b>Total incl. GST +(18%):</b> ₹<%= (listing.price * 1.18).toFixed(0) %></i>
+            </p>
+            
+            <p class="card-text"><%= listing.location %>, <%= listing.country %></p>
+
+            <!--EDIT && REMOVE AUTHORITY LOGIC-->
+            <% if( currUser && currUser._id.equals(listing.owner._id)){ %>
+                <div class="flex mt-4">
+                    <div class="d-flex gap-2">
+            
+                        <a href="/listings/<%= listing._id %>/edit" class="btn btnUpper w-50">
+                            EDIT
+                        </a>
+            
+                        <form action="/listings/<%= listing._id %>?_method=DELETE" method="POST" class="w-50"
+                            onsubmit="return confirmDelete()">
+                            <button type="submit" class="btn btnUpper w-100">
+                                REMOVE
+                            </button>
+                        </form>
+            
+                    </div>
+            
+                    <a href="/listings" class="btn btnLower">
+                    Go Back
+                </a>
+                </div>
+            <% } else { %>
+                <button
+                    class=" btnUpper"
+                    data-bs-toggle="modal"
+                    data-bs-target="#bookingModal">
+                    Book Now
+                </button>
+                <a href="/listings" class="btn btnLower">
+                    Go Back
+                </a>
+                <% } %>
+        </div>
+        <br><br>
+    </div>
+    <br>
+
+    <!--listing-details-->
+    <div class="listing-details d-flex justify-content-between flex-wrap-reverse flex-lg-nowrap">
+        <div class="place-offers">
+            <div class="tag ms-4 ms-lg-2">What this place offers</div>
+            <div class="offers row">
+                <div class="col-5"><i class="fa-solid fa-utensils"></i> Kitchen</div>
+                <div class="col-5"><i class="fa-solid fa-arrow-up-wide-short"></i> Lift</div>
+                <div class="col-5"><i class="fa-solid fa-wifi"></i> Fast wifi – 50 Mbps</div>
+                <div class="col-5"><i class="fa-solid fa-video"></i> 24×7 security</div>
+                <div class="col-5"><i class="fa-solid fa-briefcase"></i> Dedicated workspace</div>
+                <div class="col-5"><i class="fa-regular fa-snowflake"></i> Air conditioning</div>
+                <div class="col-5"><i class="fa-solid fa-toilet-portable"></i></i> Samsung refrigerator</div> 
+                <div class="col-5"><i class="fa-solid fa-seedling"></i> Shared back garden</div>
+                 <div class="col-5"><i class="fa-solid fa-tv"></i> 43-inch HDTV with Amazon Prime Video, Disney+, Chromecast, Netflix</div>
+                 <div class="col-5"><i class="fa-solid fa-car"></i> Free parking on premises</div>
+            </div>
+        </div>
+
+        <!--lsiting owner details-->
+        <div class="owner-details mb-5">
+                <div class="profile ">
+                    <i class="fa-regular fa-user"></i> Hosted by <b><%= listing.owner.username %></b>
+                </div>
+                <div class="time ps-4">
+                    <% if (listing.updatedAt.getTime() !==listing.createdAt.getTime()) { %>
+                    <p>
+                        <i>Last updated: <%= listing.updatedAt.toDateString() %></i>
+                    </p>
+                    <% } else { %>
+                        <p>
+                            <i>Created at: <%= listing.createdAt.toDateString() %></i>
+                        </p>
+                    <% } %>
+                </div>
+            </div>
+            <hr>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+
+
+    
+
+
+
+    <!--REVIEW-->
+    <div class="row mt-5 review-section">
+        <!-- Create Review Section -->
+         <% if(currUser){ %>
+        <div class="col-lg-5 col-md-12 col-sm-12 me-lg-5 mb-5">
+            <h3 class="red-text mb-5">Share Your Experience</h3>
+            <div class="review-box mt-1 mb-5">
+                <form action="/listings/<%= listing._id %>/reviews" method="post" novalidate class="needs-validation">
+                    
+                    <p>Rate this stay : </p>
+                    <fieldset class="starability-heart">
+                        <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
+                        <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                        <label for="first-rate1" title="Terrible">1 star</label>
+                        <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                        <label for="first-rate2" title="Not good">2 stars</label>
+                        <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                        <label for="first-rate3" title="Average">3 stars</label>
+                        <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                        <label for="first-rate4" title="Very good">4 stars</label>
+                        <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                        <label for="first-rate5" title="Amazing">5 stars</label>
+                    </fieldset>
+                    <div>
+                        <label for="comment" class="form-label">How was your experience? </label>
+                        <textarea class="form-control" name="review[comment]" id="comment" rows="4" required
+                            placeholder="“Your feedback matters. Share your honest experience with us.”"></textarea>
+                        <div class="valid-feedback">Review Looks good!</div>
+                        <div class="invalid-feedback">Review should be Valid!</div>
+                    </div>
+                    <div class="mt-4 mb-5">
+                        <button type="reset" class="btn btn-outline-secondary"><i class="fa-solid fa-rotate-right"></i></button>
+                        <button type="submit" class="btn btn-outline-warning">Post Review</button>
+                    </div>
+                </form>
+                <hr>
+            </div>
+        </div>
+        <% } else { %>
+            <div class="col-lg-5 col-md-12 col-sm-12 me-lg-5 mb-5">
+                <h3 class="red-text mb-3">Want to leave a review? <br>Please log in or sign up.</h3>
+                <a href="/login"><button type="submit" class="btn btn-danger">Login</button></a>
+                <a href="/signup"><button type="submit" class="btn btn-outline-danger">Sign up</button></a>
+            </div>
+        <% } %>
+        
+        
+        <!-- All Reviews Section -->
+        <div class="col-lg-6 col-md-12 col-sm-12 ms-lg-5">
+          <h3 class="red-text mb-5">What People Say About Us</h3>
+        <div class="review-box mt-1 mb-5">
+        <% if (listing.reviews.length===0) { %>
+            <p class="bg-secondary-subtle p-3">No reviews yet.</p>
+            <% } else { %>
+                <% listing.reviews.forEach(review=> { %>
+                    <div class="card review-card">
+                        <div class="card-header d-flex justify-content-between ">
+                            <span><i class="fa-solid fa-circle-user me-2"></i><%= review.author.username %></span>
+                            <% if(currUser && currUser._id.equals(review.author._id)) { %>
+                            <span><form 
+                                    action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE" method="post">
+                                    <button type="submit"><i class="fa-solid fa-trash"></i></button>
+                                </form>
+                            </span>
+                            <% } else { %>
+                                <span><i class="fa-regular fa-clock me-2"></i><%= dayjs(review.createdAt).fromNow() %></span>
+                            <% } %>    
+                        </div>
+                        <div class="card-body">
+                            <figure>
+                                <blockquote class="blockquote">
+                                    <p class="starability-result ms-3 mt-2" data-rating="<%= review.rating %>"></p>
+                                    <p class="ps-3">
+                                        <%= review.comment %> <hr>
+                                    </p>
+                                </blockquote>
+                            </figure>
+                        </div>
+                    </div>
+                    <% }) %>
+                    <% } %>
+        </div>
+        </div>
+    </div>
+    <hr>
+    <br>
+    <br>
+
+    
+    <!--LISTIG MAP LOCATION-->
+    <h4 class="mapText ">Where you’ll be</h4>
+    <p class="mapText"><%= listing.location %></p>
+    <div class="map m-auto"
+        data-title="<%- listing.title %>"
+        data-coordinates='<%- JSON.stringify(listing.geometry.coordinates) %>' >
+    </div>
+    <p class="mapText mb-5 ps-3 pt-3">Exact location will be provided after booking.</p>
+
+
+    <!--MODAL FOR BOOKIG DISABLED-->
+    <div class="modal fade" id="bookingModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+    
+                <div class="modal-header">
+                    <h5 class="modal-title red-text"><i class="fa-brands fa-airbnb"></i> Oops! Booking Disabled</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+    
+                <div class="modal-body">
+                    <p>
+                        This project is a demo, so booking functionality is not enabled.
+                        Feel free to explore listings and features.
+                    </p>
+                </div>
+    
+                <div class="modal-footer">
+                    <p class="m-auto">Thanks for checking it out!</p>
+                </div>
+    
+            </div>
+        </div>
+    </div>
+
+
+</body>

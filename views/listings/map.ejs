@@ -1,0 +1,10 @@
+<% layout('/layouts/boilerplate') %>
+<body>
+    <h1 class="ms-2 ms-lg-5 p-3">Explore All Listings</h1>
+    <div class="map m-auto mb-5" 
+        data-listings='<%= JSON.stringify(listings) %>'>
+    </div>
+    <a href="javascript:history.back()" class="btn btn-secondary ms-3 ms-lg-5 mb-5">
+        Go Back
+    </a>
+</body>

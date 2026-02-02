@@ -1,0 +1,266 @@
+
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-optical-sizing: auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/*MAIN CONTAINER*/
+.container {
+  width: 100%;
+  flex: 1;
+  margin: 10px auto;
+}
+
+/*CARD*/
+.row {
+  margin: 20px auto;
+  width: 100%;
+  justify-content: center;
+}
+
+.row a {
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+.card {
+  border: none;
+  padding: 0;
+  margin: 18px 15px;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 12rem; 
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.card-body {
+  padding: 5px;
+}
+
+.card-text {
+  margin: 0;
+}
+
+/* CARD OVERLAY EFFECT */
+.card-img-overlay {
+  opacity: 0;
+}
+
+.card-img-overlay:hover {
+  opacity: 0.2;
+  background-color: #fff;
+}
+
+.price {
+  padding-left: 0;
+}
+
+.country {
+  padding-right: 0;
+}
+
+
+/* SHOW CARD */
+.show-card{
+  width: 50%;
+  margin: 0 auto;
+}
+
+.show-Img {
+  height: 25rem;
+}
+
+/*Listings offer*/
+
+.tag {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.offers div {
+  padding: 7px;
+}
+
+.place-offers {
+  width: 60%;
+}
+
+.owner-details {
+  width: 40%;
+  height: 70px;
+  padding: 10px;
+  text-align: center;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+}
+
+.review-section {
+  width: 90%;
+}
+
+@media (max-width: 800px) {
+  .card {
+    margin: 15px 5px;
+  }
+
+  .card-img-top {
+    height: 6rem;
+  }
+
+  .card-title {
+    font-size: 16px;
+  }
+
+  .card-text {
+    font-size: 13px;
+  }
+
+  .text-muted {
+    font-size: 11px;
+  }
+
+  .show-card {
+    width: 80% !important;
+    margin: 5px auto !important;
+  }
+
+  .show-Img {
+    height: 11rem !important;
+  }
+
+  .place-offers {
+    width: 100%;
+  }
+
+  .owner-details{
+    width: 80%;
+    margin: 0 auto;
+  }
+
+}
+
+.red-text {
+  color: #fe424d;
+  font-weight: 500;
+}
+
+.review-card {
+  margin-bottom: 5px;  
+}
+
+.review-card form {
+  display: inline;
+  background-color: none;
+}
+
+.review-card form button {
+  position: absolute;
+  right: 0;
+  margin-right: 15px;
+  border: none;
+  background-color: none;
+}
+
+
+.successmsg {
+  z-index: 10;
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px 5px grey;
+}
+
+.tax {
+  display: none;
+}
+
+
+/*listings-details*/
+.policy-section,
+.company-section {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+
+.policy-section h2,
+.company-section h2 {
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.policy-section h5,
+.company-section h5 {
+  margin-top: 1.5rem;
+  font-weight: 500;
+}
+
+.policy-section ul,
+.company-section ul {
+  padding-left: 1.2rem;
+}
+
+.policy-section li,
+.company-section li {
+  margin-bottom: 0.5rem;
+}
+
+.policy-section p,
+.company-section p {
+  line-height: 1.7;
+}
+
+.btnUpper {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  margin-top: 30px;
+  border-radius: 30px;
+  text-align: center;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(90deg,#EC2453,#E31B5B,#CD1160);
+  transition: filter 0.2s ease;
+}
+
+.btnUpper:hover {
+  color: #fff;
+  filter: brightness(1.05);
+}
+
+.btnLower {
+  width: 100%;
+  padding: 9px;
+  margin-top: 8px;
+  border-radius: 30px;
+  text-align: center;
+  color: #E31B5B;
+  font-weight: 600;
+  text-decoration: none;
+  background:
+    linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(90deg, #EC2453, #E31B5B, #CD1160) border-box;
+  border: 2px solid transparent;
+}
+
+.btnLower:hover {
+  color: #E31B5B;
+  filter: brightness(1.05);
+}
+
+
+

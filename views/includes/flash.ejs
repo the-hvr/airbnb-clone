@@ -1,0 +1,20 @@
+<!--for success flash-->
+<% if(successMsg && successMsg.length > 0 ) { %>
+    <div class="row">
+    <div class="alert alert-secondary alert-dismissible fade show col-lg-6 col-sm-8" role="alert">
+        <b>airbnb - </b> <%= successMsg %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    </div>
+<% } %>
+
+
+<!--for error flash-->
+<% if(errorMsg && errorMsg.length > 0 ) { %>
+    <div class="row">
+    <div class="alert alert-danger alert-dismissible fade show col-lg-6 col-sm-8" role="alert">
+        <b>airbnb - </b> <%= errorMsg %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    </div>
+<% } %>

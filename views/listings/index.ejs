@@ -1,0 +1,57 @@
+<% layout('/layouts/boilerplate') %>
+<body>
+    <%- include('../includes/filter.ejs') %>
+    <hr>
+
+    <div class="row">
+    <% if(allListings.length === 0) { %>
+        <div class="col-12 text-center">
+            <h3 class="red-text">No Listing available!</h3>
+        </div>
+
+    <% } else { %>
+        <h3 class="col-12">
+            <% if(category){ %>
+                <%= category %> Stays
+            <% } else if (search){ %>
+                Results for “<%= search %>”
+            <% } else { %>
+                Explore Stays
+            <% } %>
+        </h3>
+
+        <% allListings.forEach(listing => { %>
+            <div class="col-6 col-md-4 col-lg-3">
+                <a href="/listings/<%= listing._id %>" class="text-decoration-none text-dark">
+                    <div class="card h-100">
+                        <img src="<%= listing.image.url %>" class="card-img-top " alt="Listing image">
+
+                        <div class="card-img-overlay"></div>
+
+                        <div class="card-body">
+                            <h5 class="card-title"><%= listing.title %></h5>
+
+                            <p class="card-text mb-1">
+                                Price: ₹<%= listing.price.toLocaleString("en-IN") %>/night
+                            
+                                <small class="text-muted tax">
+                                    <i>
+                                        +GST (18%): ₹<%= (listing.price * 0.18).toFixed(0) %>
+                                    </i>
+                                </small>
+                            </p>
+
+                            <p class="card-text text-muted">
+                                <%= listing.location %>
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        <% }) %>
+
+    <% } %>
+
+</div>
+
+</body>

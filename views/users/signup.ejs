@@ -1,0 +1,48 @@
+<% layout('/layouts/boilerplate') %>
+
+<body>
+    <div class="row mt-4 mb-5">
+        <div class="col-10 col-lg-6">
+            <h3 class="mb-5 red-text">SignUp in airbnb
+                <hr>
+            </h3>
+            <form action="/signup" method="post" novalidate class="needs-validation">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Enter Username : </label>
+                    <input type="text" name="username" id="username" class="form-control" required placeholder="username must be unique!">
+                    <div class="invalid-feedback">username should be valid.</div>
+                </div>
+                    
+                <div class="mb-3">
+                    <label for="email" class="form-label">Add email :</label>
+                    <input type="email" name="email" id="email" class="form-control" placeholder="e.g. someone@gmail.com" required>
+                    <div class="valid-feedback">email looks good!</div>
+                    <div class="invalid-feedback">email should be valid!</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Create Password :</label>
+                    <div class="input-group">
+                        <input type="password" name="password" id="password" class="form-control" required>
+                        <button class="btn btn-secondary" type="button" id="togglePassword">
+                            <i class="bi bi-eye"></i>
+                        </button>
+                    </div>
+                    <div class="invalid-feedback">password should be valid!</div>
+                </div>
+
+                <p class="mt-2"><a href="/login">Been here before? Login to explore.</a></p>
+
+                <div class="mb-4 form-check">
+                    <input type="checkbox" class="form-check-input" id="terms" required>
+                    <label class="form-check-label" for="terms">Agree T&C; </label>
+                    <span><a href="/listings/terms&conditions">Wants to read T&C?</a></span>
+                </div>
+
+                <div class="mb-3">
+                    <button type="submit" class="btn btnUpper">Sign Up</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
