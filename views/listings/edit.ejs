@@ -2,8 +2,8 @@
 <% layout('/layouts/boilerplate') %>
 <body>
     <div class="row">
-            <div class="col-8">
-                <h3 class="mb-4 red-text">Edit your Listing
+            <div class="col-sm-10 col-lg-8">
+                <h3 class="mb-4 red-text">Edit this listing
                     <hr>
                 </h3>
                 <form action="/listings/<%= listing._id %>?_method=PUT" 
@@ -11,16 +11,14 @@
                     novalidate class="needs-validation"
                     enctype="multipart/form-data">
                     <div class="mb-3">
-                        <label for="title" class="form-label">Enter Title : </label>
+                        <label for="title" class="form-label">Title : </label>
                         <input type="text" name="listing[title]" value="<%= listing.title %>" id="title" class="form-control" required>
-                        <div class="valid-feedback">Title Looks good!</div>
                         <div class="invalid-feedback">Title should be Valid!</div>
                     </div>
 
                     <div class="mb-3">
-                        <label for="description" class="form-label">Add Description :</label>
+                        <label for="description" class="form-label">Description :</label>
                         <textarea name="listing[description]" id="description" class="form-control" required><%= listing.description %></textarea>
-                        <div class="valid-feedback">Description Looks good!</div>
                         <div class="invalid-feedback">Description should be Valid!</div>
                     </div>
 
@@ -38,9 +36,8 @@
                     
                     <div class="row">
                         <div class="col-md-4 price">
-                        <label for="price" class="form-label">Enter Price : </label>
+                        <label for="price" class="form-label">Price : </label>
                         <input type="number" name="listing[price]" value="<%= listing.price %>" id="price" class="form-control" required>
-                        <div class="valid-feedback">Price Looks good!</div>
                         <div class="invalid-feedback">Price should be Valid!</div>
                     </div>
 

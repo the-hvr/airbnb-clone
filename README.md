@@ -1,137 +1,208 @@
-# Airbnb Clone (Wanderlust)
+# 🏡 Airbnb Clone – Full Stack Project
 
-An Airbnb-inspired full-stack web application built using **Node.js, Express, MongoDB, and EJS**.  
-This project follows the **MVC architecture** and demonstrates CRUD operations, RESTful routing, and server-side rendering.
+A full-stack Airbnb-style web application built to understand and implement real-world web development concepts using **Node.js, Express, MongoDB Atlas, and EJS**.
 
-> ⚠️ This project is currently under development and is intended for learning and portfolio purposes.
+This project focuses on authentication, CRUD operations, reviews, maps integration, image uploads, and responsive UI — following the **MVC architecture**.
+
+
+---
+
+
+## 🚀 Live Demo
+👉 (Add your deployed link here after deployment)
+
 
 ---
 
-## 🚀 Features
 
-- View all property listings
-- Create new listings
-- Edit existing listings
-- Delete listings
-- Server-side rendering using EJS
-- Reusable layout and partial templates
-- Responsive UI with Bootstrap
-- MVC-based folder structure
+## 📌 Features
+
+- 🔐 User Authentication (Sign up / Login / Logout)
+- 🏠 Create, Edit & Delete Listings
+- 🖼️ Image Upload with Cloudinary
+- 📍 Location-based Listings using OpenStreetMap (Nominatim)
+- ⭐ Review & Rating System
+- 🧾 GST Price Calculation
+- ⏳ Loader for form submissions
+- 📱 Fully Responsive UI (Bootstrap)
+- 🛡️ Server-side Validation & Error Handling
+- 🧩 MVC Architecture
+
 
 ---
+
 
 ## 🛠️ Tech Stack
 
 ### Frontend
-- EJS (Embedded JavaScript Templates)
+- EJS
 - Bootstrap 5
 - Font Awesome
+- Vanilla JavaScript
 
 ### Backend
 - Node.js
 - Express.js
-
-### Database
-- MongoDB
+- MongoDB Atlas
 - Mongoose
+- Passport.js (Authentication)
+
+### Other Tools & Services
+- Cloudinary (Image storage)
+- Multer (File upload)
+- OpenStreetMap (Geocoding)
+- Day.js (Time formatting)
+
 
 ---
 
-## 📁 Project Folder Structure
+
+## 📂 Project Structure
 
 AIRBNB/
-├── init/
-│ ├── data.js
-│ └── init.js
 │
-├── models/
-│ └── listing.js
+├─ controllers/
+│ ├─ listing.js
+│ ├─ review.js
+│ └─ user.js
 │
-├── public/
-│ ├── css/
-│ │ └── style.css
-│ └── js/
-│ └── app.js
+├─ init/
+│ ├─ data.js
+│ └─ init.js
 │
-├── views/
-│ ├── includes/
-│ │ ├── navbar.ejs
-│ │ ├── footer.ejs
-│ │ └── starter.ejs
-│ │
-│ ├── layouts/
-│ │ └── boilerplate.ejs
-│ │
-│ ├── listings/
-│ │ ├── index.ejs
-│ │ ├── show.ejs
-│ │ ├── new.ejs
-│ │ └── edit.ejs
+├─ models/
+│ ├─ listing.js
+│ ├─ review.js
+│ └─ user.js
 │
-├── index.js
-├── package.json
-└── package-lock.json
+├─ node_modules/
+│
+├─ public/
+│ ├─ css/
+│ └─ js/
+│
+├─ routes/
+│ ├─ listing.js
+│ ├─ review.js
+│ └─ user.js
+│
+├─ utils/
+│
+├─ views/
+│ ├─ includes/
+│ ├─ layouts/
+│ ├─ listings/
+│ └─ users/
+│
+├─ .env
+├─ .gitignore
+├─ cloudConfig.js
+├─ image.png
+├─ middleware.js
+├─ package-lock.json
+├─ package.json
+├─ README.md
+├─ schema.js
+└─ server.js
 
 
 ---
 
-## 🧱 MVC Architecture
 
-- **Model** → `models/listing.js`  
-  Handles MongoDB schema and database operations.
+## ⚙️ Environment Variables
 
-- **View** → `views/`  
-  Handles UI using EJS templates.
+Create a `.env` file in the root directory and add:
 
-- **Controller** → `index.js`  
-  Handles routing, business logic, and interaction between Model and View.
+MONGO_URI=your_mongodb_atlas_url
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_KEY=your_key
+CLOUDINARY_SECRET=your_secret
+SESSION_SECRET=your_session_secret
+
+
+⚠️ **Do not push `.env` to GitHub**
+
 
 ---
 
-## ⚙️ Installation & Setup
 
-1. Clone the repository
-git clone https://github.com/the-hvr/airbnb.git
+## 🧪 Running Locally
 
-2. Install dependencies
+# Clone the repo
+git clone https://github.com/the-hvr/airbnb-clone.git
+
+# Move into the project
+cd airbnb-clone
+
+# Install dependencies
 npm install
 
-3. Start MongoDB (local or Atlas)
-mongosh (local)
-
-4. Run the application
-node index.js
-
-5. Open browser
-http://localhost:8080/listings
+# Start the server
+npm start
 
 
-## 📌 Learning Outcomes
-
-Practical use of MongoDB schemas
-
-Understanding MVC architecture
-
-Implementing RESTful APIs
-
-Server-side rendering with EJS
+---
 
 
+##  🗄️ Database Initialization (Optional)
 
-## 🔮 Future Improvements
+node init/init.js
 
-User authentication
 
-Image upload via Cloudinary
+---
 
-Reviews & ratings
 
-Booking functionality
+##  🧠 Key Learnings
 
-Map integration
+- Implementing MVC architecture
+
+- Handling authentication & authorization
+
+- Integrating third-party services (Cloudinary, Maps)
+
+- Managing async operations & loaders
+
+- Using MongoDB Atlas with environment variables
+
+- Deploying full-stack applications
+
+
+---
+
+
+## 📌 Future Improvements
+
+- Booking & payment integration
+
+- Wishlist functionality
+
+- Admin dashboard
+
+- Better caching for map APIs
+
+
+---
+
+
+##  📸 Screenshots
+![alt text]({FCB3F660-65F4-45E4-853D-4B0E6040FC47}.png)
+![alt text](image.png)
+![alt text]({CC534A73-DC17-49FD-819F-415B618CABC7}.png)
+
+
+---
 
 
 ## 👤 Author
 
 Harshvardhan Raj
 Web Developer
+
+
+---
+
+
+## 📄 License
+
+This project is for learning and portfolio purposes only.
+Inspired by Airbnb — not affiliated with Airbnb.
