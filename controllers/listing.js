@@ -58,8 +58,19 @@ module.exports.createListing = async (req, res) => {
     let {location} = req.body.listing;
 
     const response = await fetch(
-        `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(location)}`
+        `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(location)}`,
+            {
+            headers: {
+                'User-Agent': 'airbnb-clone-app/1.0 (thehvr21@gmail.com)'
+                }
+            }
         );
+
+    if (!response.ok) {
+        req.flash("error", "Error fetching location. Please try again.");
+        return res.redirect("/listings/new");
+    }    
+
     const data = await response.json();
     if(!data.length){
         req.flash("error", "Location not found. Please enter a valid location.");
