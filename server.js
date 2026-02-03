@@ -61,7 +61,9 @@ const store = MongoStore.create({
 
 store.on('error', (err)=> {
     console.log('ERROR FROM MONGO-SESSION', err);
-})
+});
+
+app.set("trust proxy", 1);
 
 const sessionOptions = {
     store,
@@ -71,7 +73,7 @@ const sessionOptions = {
     cookie : {
         httpOnly : true,
         secure : true,
-        sameSite : 'lax',
+        sameSite: "none",
         expires : Date.now() + 7 * 24 * 60 * 60 * 1000,
         maxAge : 7 * 24 * 60 * 60 * 1000,  
     },  
@@ -158,6 +160,7 @@ app.use((req, res, next) => {
 //ERROR HANDLING MIDDLEWARE
 app.use((err, req, res, next) => {
     let {status=500, message="500 - Oops!Something Went Wrong."} = err;
+    console.log(status, err);
     res.status(status).render('./listings/error.ejs', {err});
 });
 
