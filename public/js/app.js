@@ -127,8 +127,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   //Auto zoom
   if (bounds.isValid()) {
-    map.fitBounds(bounds, { padding: [50, 50] });
-  }
+  map.fitBounds(bounds, {
+    padding: [120, 120],
+    maxZoom: 8
+  });
+}
 });
 
 
